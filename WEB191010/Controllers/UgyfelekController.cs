@@ -20,7 +20,7 @@ namespace WEB191010.Controllers
 
         public ActionResult Uj()
         {
-            var vm = new UjUgyfelViewModel()
+            var vm = new UgyfelFormViewModel()
             {
                 ElofizetesTipusok = _context.Elofizetesek.ToList()
             };
@@ -30,6 +30,17 @@ namespace WEB191010.Controllers
         [HttpPost]
         public ActionResult Mentes(Ugyfel ugyfel)
         {
+            if (!ModelState.IsValid)
+            {
+                var vm = new UgyfelFormViewModel
+                {
+                    Ugyfel = ugyfel,
+                    ElofizetesTipusok = _context.Elofizetesek.ToList()
+                };
+            return View("UgyfelForm", vm);
+        }
+        
+
             if (ugyfel.Id == 0)
             {
                 _context.Ugyfelek.Add(ugyfel);
@@ -54,7 +65,7 @@ namespace WEB191010.Controllers
             var ugyfel = _context.Ugyfelek.SingleOrDefault(u => u.Id == id);
             if (ugyfel == null) return HttpNotFound();
 
-            var vm = new UjUgyfelViewModel()
+            var vm = new UgyfelFormViewModel()
             {
                 ElofizetesTipusok = _context.Elofizetesek.ToList(),
                 Ugyfel = ugyfel

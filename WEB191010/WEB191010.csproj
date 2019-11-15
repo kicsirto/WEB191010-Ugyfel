@@ -227,6 +227,7 @@
     <Compile Include="Models\Film.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Min18EvesHaElofizeto.cs" />
     <Compile Include="Models\Mufaj.cs" />
     <Compile Include="Models\Ugyfel.cs" />
     <Compile Include="Models\UjUgyfelViewModel.cs" />

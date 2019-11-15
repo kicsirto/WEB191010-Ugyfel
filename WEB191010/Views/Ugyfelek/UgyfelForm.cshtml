@@ -1,4 +1,4 @@
-﻿@model WEB191010.Models.UjUgyfelViewModel
+﻿@model WEB191010.Models.UgyfelFormViewModel
 @{
     ViewBag.Title = "Uj";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,10 +12,13 @@
         @*<label for="Nev">Név</label>*@
         @Html.LabelFor(u => u.Ugyfel.Nev)
         @Html.TextBoxFor(u => u.Ugyfel.Nev, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Ugyfel.Nev)
     </div>
     <div class="form-group">
         @Html.LabelFor(u => u.Ugyfel.SzuletesiDatum)
         @Html.TextBoxFor(u => u.Ugyfel.SzuletesiDatum, "{0:yyyy-MM-dd}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Ugyfel.SzuletesiDatum)
+
     </div>
     <div class="form-group">
         @Html.LabelFor(u => u.Ugyfel.ElofizetesTipusId)
@@ -24,6 +27,7 @@
        new SelectList(Model.ElofizetesTipusok, "Id", "Nev"),
        "válassz a listából...",
        new { @class = "form-check-label" })
+        @Html.ValidationMessageFor(m => m.Ugyfel.ElofizetesTipusId)
     </div>
     <div class="form-group  form-check">
         @Html.CheckBoxFor(u => u.Ugyfel.HirlevelFeliratkozas, new { @class = "form-check-input" })
