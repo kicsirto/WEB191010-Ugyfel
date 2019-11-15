@@ -34,5 +34,10 @@
         @Html.LabelFor(u => u.Ugyfel.HirlevelFeliratkozas, new { @class = "form-check-label" })
     </div>
     @Html.HiddenFor(m => m.Ugyfel.Id)
+    @Html.AntiForgeryToken()
     <button type="submit" class="btn btn-primary">Új ügyfél adatainak mentése</button>
+}
+@section scripts
+{
+   @Scripts.Render("~/bundles/jqueryval") 
 }
